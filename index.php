@@ -1,5 +1,7 @@
 <?php
-    session_start();
+    include "servicos/servicosMensagemSessao.php";
+    include "servicos/servicoValidacao.php";
+    include "servicos/servicosCategoriaCompetidor.php";
 ?>    
 <!DOCTYPE html>
 <html lang = "pt-br">
@@ -17,13 +19,15 @@
 
     <form action = "script.php" method ="post"> 
         <?php
-        $mensagemDeSucesso = isset($_SESSION["mensagem de sucesso"]) ? $_SESSION["mensagem de sucesso"] : "";
-        if($mensagemDeSucesso){
+        $mensagemDeSucesso = obterMensagemSucesso();
+        if(!empty($mensagemDeSucesso))
+        {
             echo $mensagemDeSucesso;
         }
 
-        $mensagemDeErro = isset($_SESSION["mensagem de erro"]) ? $_SESSION["mensagem de erro"] : "";
-        if(!empty($mensagemDeErro)){
+        $mensagemDeErro = obterMensagemErro();
+        if(!empty($mensagemDeErro))
+        {
             echo $mensagemDeErro;
         }
         ?>
