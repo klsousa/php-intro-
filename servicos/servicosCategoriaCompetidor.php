@@ -1,57 +1,51 @@
 <?php
-function defineCategoriaCompetidor(string $nome , string $idade) : ?string{
-    $categoria = [];
-    $categoria[] = 'infantil';
-    $categoria[] = 'adolescente';
-    $categoria[] = 'adulto';
-    $categoria[] = 'idoso';
+
+function defineCategoriaCompetidor(string $nome, string $idade) : ?string
+{
+    $catetorias = [];
+    $categorias[] = 'infantil';
+    $categorias[] = 'adolescente';
+    $categorias[] = 'adulto';
     if(validaNome($nome) && validaIdade($idade))
     {
-          if($idade >= 6 && $idade <= 12){
-    
-        for($i = 0; $i <= count($categoria); $i++)
+        removerMensagemErro();
+        if($idade >= 6 && $idade <= 12)
+        {
+            for($i = 0; $i <= count($categorias); $i++)
             {
-                if($categoria[$i] == 'infantil')
-                 setarMensagemSucesso(" O nadador" .$nome. " compete na categoria " . $categoria[$i]);
-                 return null;
-            }
-    }
-    else if($idade >= 13 && $idade <= 18){
-    
-        for($i = 0; $i <= count($categoria); $i++)
-            {
-                if($categoria[$i] == 'adolescente')
-                    setarMensagemSucesso(" O nadador" .$nome. " compete na categoria " . $categoria[$i]);
+                if($categorias[$i] == 'infantil')
+                {
+                    setarMensagemSucesso("O nadador ".$nome. " compete na categoria " .$categorias[$i]);
                     return null;
+                }
             }
-    
-    }else if($idade >= 19 && $idade <= 59){
-    
-        for($i = 0; $i <= count($categoria); $i++)
+        }
+        else if($idade >= 13 && $idade <= 18)
+        {
+            for($i = 0; $i <= count($categorias); $i++)
             {
-                if($categoria[$i] == 'adulto')
-                    setarMensagemSucesso(" O nadador" .$nome. " compete na categoria " . $categoria[$i]);
+                if($categorias[$i] == 'adolescente')
+                {
+                    setarMensagemSucesso("O nadador ".$nome. " compete na categoria " .$categorias[$i]);
                     return null;
+                }
             }
-    } else if($idade >= 60){
-    
-        for($i = 0; $i <= count($categoria); $i++)
+        }
+        else
+        {
+            for($i = 0; $i <= count($categorias); $i++)
             {
-                if($categoria[$i] == 'idoso')
-                    setarMensagemSucesso(" O nadador" .$nome. " compete na categoria " . $categoria[$i]);
+                if($categorias[$i] == 'adulto')
+                {
+                    setarMensagemSucesso("O nadador ".$nome. " compete na categoria " .$categorias[$i]);
                     return null;
+                }
             }
-          
-    } else {
-        setarMensagemErro("O nadador" . $nome . " não compete");
-        return;
-    }
+        }
     }
     else
     {
+        removerMensagemSucesso();
         return obterMensagemErro();
     }
-
 }
-
-?>

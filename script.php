@@ -1,14 +1,12 @@
 <?php
 
-include "servicos/servicosMensagemSessao.php";
-include "servicos/servicoSValidacao.php";
+include "servicos/servicoMensagemSessao.php";
+include "servicos/servicosValidacao.php";
 include "servicos/servicosCategoriaCompetidor.php";
 
-
-$nome = $_POST['nome']; 
+$nome = $_POST['nome'];
 $idade = $_POST['idade'];
 
 defineCategoriaCompetidor($nome, $idade);
 
-header (string: 'Location: index.php');
-?>
+header('location: index.php');
